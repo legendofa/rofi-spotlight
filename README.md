@@ -9,6 +9,8 @@
 |x|Launch shell command|`function: x neofetch`|
 |e|Login session management|`function: e`|
 
+Flags can be used to launch a specific function: `python spotlight.py -w`
+
 #### Dependencies
 
 https://pypi.org/project/python-rofi/

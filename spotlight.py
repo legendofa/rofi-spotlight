@@ -9,7 +9,7 @@ class Spotlight:
 	def __init__(self):
 		self.rofi = Rofi()
 
-	def multifuncitonal(self):
+	def multifuncitonal(self, argument):
 		def reformat_whitespaces(self, search):
 			search = search.split(" ")
 			while "" in search:
@@ -17,7 +17,13 @@ class Spotlight:
 			del search[0]
 			return search
 
-		search = self.rofi.text_entry("function")
+		try:
+			argument
+		except:
+			search = self.rofi.text_entry("function")
+		else:
+			search = argument + " " + self.rofi.text_entry("function")
+
 		selector = search[0]
 		if selector == "w":
 			search = reformat_whitespaces(self, search)
@@ -81,6 +87,5 @@ class Spotlight:
 		output = output.decode("utf-8").split("\n")
 		self.rofi.select("out", output)
 
-
 sp = Spotlight()
-sp.multifuncitonal()
+sp.multifuncitonal(sys.argv[1][1])
